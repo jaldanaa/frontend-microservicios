@@ -1,0 +1,57 @@
+<header id="header" class="header">
+  <div class="top-left pt-3">
+    <div class="navbar-header">
+      <a ui-sref="noticias({})" ui-sref-active="cls_active"
+        >UNIVERSIDAD DE GUASTATOYA</a
+      >
+    </div>
+  </div>
+  <div class="top-right">
+    <div class="header-menu mt-3" ng-if="!vm.authenticationService.validSession() && vm.content !== 'login'">
+      <a class="active" ui-sref="login({})">Login</a>
+    </div>
+    <div class="header-menu" ng-if="vm.authenticationService.validSession()">
+      <div class="header-left">
+        <div class="dropdown for-notification">
+          <a
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="notification"
+            ui-sref="noticias({})"
+            ui-sref-active="cls_active"
+          >
+            <i class="fa fa-bell"></i>
+          </a>
+          <a
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="evaluaciones"
+            ui-sref="evaluaciones({})"
+            ui-sref-active="cls_active"
+          >
+            <i class="fa fa-lightbulb-o"></i>
+          </a>
+        </div>
+      </div>
+      <div class="user-area dropdown float-right">
+        <a
+          class="dropdown-toggle active"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <img
+            class="user-avatar rounded-circle"
+            src="images/admin.jpg"
+            alt="User Avatar"
+          />
+        </a>
+        <div class="user-menu dropdown-menu">
+          <a class="nav-link" ng-click="vm.authenticationService.logout()"
+            ><i class="fa fa-power-off"></i>Cerrar Sesion</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

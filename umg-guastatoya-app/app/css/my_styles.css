@@ -1,0 +1,11 @@
+tbody tr {
+    cursor: pointer;
+}
+
+tbody tr:hover {
+    background-color: lightgray;
+}
+
+.unclickeable-row {
+    cursor: default !important;
+}

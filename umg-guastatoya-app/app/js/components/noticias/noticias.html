@@ -1,0 +1,47 @@
+<sidebar content="'noticias'"></sidebar>
+<div id="right-panel" class="right-panel">
+  <header-component></header-component>
+  <div class="content pb-0">
+    <div class="row">
+      <div class="card w-100">
+        <div class="card-footer">
+          <strong class="card-title mb-3"
+            >{{vm.noticiasService.tituloNoticias}}</strong
+          >
+        </div>
+      </div>
+      <div
+        class="card w-100"
+        ng-repeat="p in vm.noticiasService.noticias track by $index"
+      >
+        <img
+          class="card-img-top"
+          src="{{p.imagen}}"
+          alt="Card image cap"
+          ng-if="p.imagen"
+        />
+        <div class="card-body">
+          <h4 class="card-title mb-3">
+            {{p.titulo}}
+            <strong
+              ng-if="vm.noticiasService.tituloNoticias === 'Publicaciones Recientes'"
+              >| {{p.clasificacion.nombre}}</strong
+            >
+          </h4>
+          <p class="card-text">
+            {{p.contenido}}
+          </p>
+        </div>
+        <div class="card-footer pb-0">
+          <div ng-if="vm.authenticationService.validSession()" class="float-left">
+            <button type="button" class="btn btn-primary" ng-click="vm.editarNoticia(p.id)"><i class="fa fa-pencil"></i>&nbsp; Editar</button>
+            <button type="button" class="btn btn-primary" ng-click="vm.eliminarNoticia(p.id)"><i class="fa fa-trash-o"></i>&nbsp; Eliminar</button>
+          </div>
+          <strong class="card-title mb-3 float-right"
+            >{{p.autor.first_name}} {{p.autor.last_name}} |
+            {{p.fecha_hora_creacion | date:'medium'}}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

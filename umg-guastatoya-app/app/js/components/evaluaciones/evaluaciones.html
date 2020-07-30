@@ -1,0 +1,57 @@
+<sidebar content="'evaluaciones'"></sidebar>
+<div id="right-panel" class="right-panel">
+  <header-component></header-component>
+  <div class="content pb-0">
+    <div class="row">
+      <div class="card w-100">
+        <div class="card-header">
+          <strong class="card-title">Evaluaciones disponibles</strong>
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Catedratico</th>
+                <th scope="col">Preguntas</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="evaluacion in vm.evaluaciones track by $index">
+                <th scope="row">{{evaluacion.id}}</th>
+                <td>{{evaluacion.titulo}}</td>
+                <td>{{evaluacion.curso.nombre}}</td>
+                <td>
+                  {{evaluacion.catedratico.first_name}}
+                  {{evaluacion.catedratico.last_name}}
+                </td>
+                <td>{{evaluacion.preguntas.length}}</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-lg btn-warning btn-sm"
+                    ng-click="vm.editarEvaluacion(evaluacion.id)"
+                  >
+                    <i class="fa fa-pencil fa-lg"></i>&nbsp;
+                    <span id="payment-button-amount">Editar</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-lg btn-info btn-sm"
+                    ng-click="vm.resolverEvaluacion(evaluacion.id)"
+                  >
+                    <i class="fa fa-check fa-lg"></i>&nbsp;
+                    <span id="payment-button-amount">Resolver</span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

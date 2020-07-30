@@ -1,0 +1,39 @@
+<aside id="left-panel" class="left-panel">
+  <nav class="navbar navbar-expand-sm navbar-default">
+    <div id="main-menu" class="main-menu collapse navbar-collapse">
+      <ul class="nav navbar-nav" ng-if="vm.content === 'noticias'">
+        <li ng-if="vm.authenticationService.validSession()">
+          <a ui-sref="noticia({})" ui-sref-active="cls_active"
+            ><i class="menu-icon fa fa-plus"></i>
+            Agregar noticia
+          </a>
+        </li>
+        <li class="menu-title">Filtrar por clasificacion</li>
+        <li>
+          <a ng-click="vm.filtrarNoticias(null, 'Publicaciones Recientes')">
+            Ver todos
+          </a>
+        </li>
+        <li ng-repeat="c in vm.noticiasService.clasificaciones track by $index">
+          <a ng-click="vm.filtrarNoticias(c.id, c.nombre)">
+            {{c.nombre}}
+          </a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav" ng-if="vm.content === 'evaluaciones'">
+        <li>
+          <a ui-sref="evaluacion({})" ui-sref-active="cls_active"
+            ><i class="menu-icon fa fa-plus"></i>
+            Agregar evaluacion
+          </a>
+        </li>
+        <li class="menu-title">Evaluaciones</li>
+        <li>
+          <a ui-sref="evaluacionesResueltas({})" ui-sref-active="cls_active">
+            Evaluaciones resueltas
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</aside>
